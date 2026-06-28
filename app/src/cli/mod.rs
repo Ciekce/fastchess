@@ -1095,9 +1095,11 @@ impl OptionsParser {
                     "fischerandom" => data.tournament_config.variant = VariantType::Frc,
                     "standard" => data.tournament_config.variant = VariantType::Standard,
                     "shogi" => data.tournament_config.variant = VariantType::Shogi,
+                    "shatranj" => data.tournament_config.variant = VariantType::Shatranj,
                     _ => {
                         return Err(
-                            "Unknown variant. Use: standard, fischerandom, or shogi.".to_string()
+                            "Unknown variant. Use: standard, fischerandom, shogi, or shatranj."
+                                .to_string(),
                         )
                     }
                 }

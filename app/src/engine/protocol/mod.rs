@@ -249,6 +249,10 @@ mod tests {
             ProtocolType::from_variant(VariantType::Shogi),
             ProtocolType::Usi
         );
+        assert_eq!(
+            ProtocolType::from_variant(VariantType::Shatranj),
+            ProtocolType::Uci
+        );
     }
 
     #[test]
