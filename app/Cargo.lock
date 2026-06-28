@@ -353,7 +353,7 @@ dependencies = [
 [[package]]
 name = "meowshatranj"
 version = "0.1.0"
-source = "git+https://github.com/Ciekce/meowshatranj/?rev=6a5b92faa36ba9f1a82803b1369b2edceb6a3839#6a5b92faa36ba9f1a82803b1369b2edceb6a3839"
+source = "git+https://github.com/Ciekce/meowshatranj/?rev=c7ebb286694933b0f4daa95208693c22449b9781#c7ebb286694933b0f4daa95208693c22449b9781"
 dependencies = [
  "arrayvec",
 ]
