@@ -97,8 +97,7 @@ impl ShatranjGame {
     /// Checks for threefold repetition.
     pub fn is_threefold_repetition(&self) -> bool {
         let curr_hash = self.pos.key();
-        let limit = self.hash_history.len() - self.pos.halfmove() as usize;
-        self.hash_history[limit..]
+        self.hash_history
             .iter()
             .rev()
             .skip(3)
