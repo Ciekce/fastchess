@@ -11,6 +11,7 @@ use chess_library_rs::{
 
 use crate::types::VariantType;
 use crate::variants::chess::ChessGame;
+use crate::variants::shatranj::ShatranjGame;
 use crate::variants::shogi::ShogiGame;
 
 /// A chess opening position, optionally with a sequence of book moves.
@@ -74,6 +75,16 @@ impl Opening {
                     return false;
                 };
                 self.moves.iter().all(|mv| game.make_usi_move(mv))
+            }
+            VariantType::Shatranj => {
+                let Some(mut game) = (if let Some(sfen) = &self.fen_epd {
+                    ShatranjGame::from_fen(sfen)
+                } else {
+                    Some(ShatranjGame::new())
+                }) else {
+                    return false;
+                };
+                self.moves.iter().all(|mv| game.make_uci_move(mv))
             }
         }
     }

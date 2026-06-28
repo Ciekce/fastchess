@@ -16,6 +16,7 @@ use chess_library_rs::{
 };
 
 // Re-export types that other modules need
+pub use crate::variants::shatranj::ShatranjGame;
 pub use crate::variants::shogi::ShogiGame;
 
 /// A validated chess move.
@@ -395,6 +396,10 @@ impl Game for ChessGame {
     }
 
     fn as_shogi(&self) -> Option<&ShogiGame> {
+        None
+    }
+
+    fn as_shatranj(&self) -> Option<&ShatranjGame> {
         None
     }
 

@@ -16,7 +16,7 @@ impl ProtocolType {
     /// Create protocol type from variant.
     pub fn from_variant(variant: VariantType) -> Self {
         match variant {
-            VariantType::Standard | VariantType::Frc => ProtocolType::Uci,
+            VariantType::Standard | VariantType::Frc | VariantType::Shatranj => ProtocolType::Uci,
             VariantType::Shogi => ProtocolType::Usi,
         }
     }

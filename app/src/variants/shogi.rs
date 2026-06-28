@@ -1413,6 +1413,10 @@ impl crate::variants::Game for ShogiGame {
         Some(self)
     }
 
+    fn as_shatranj(&self) -> Option<&crate::variants::shatranj::ShatranjGame> {
+        None
+    }
+
     fn is_threefold_repetition(&self) -> bool {
         // Shogi uses fourfold repetition (sennichite), not threefold
         // For now, return false as we don't track position history

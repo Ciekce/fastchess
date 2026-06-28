@@ -56,12 +56,18 @@ pub enum GameOverReason {
     Repetition,
     /// Fifty-move rule (chess only).
     FiftyMoveRule,
+    /// Seventy-move rule (shatranj only).
+    SeventyMoveRule,
     /// Perpetual check loss (shogi only).
     PerpetualCheck,
     /// Illegal move (shogi impasse declaration failure, etc.)
     IllegalMove,
     /// Win by impasse declaration (shogi only).
     ImpasseWin,
+    /// Win by bare king (shatranj only.)
+    BareKingWin,
+    /// Loss by bare king (shatranj only.)
+    BareKingLoss,
 }
 
 impl GameOverReason {
@@ -82,7 +88,8 @@ impl GameOverReason {
                 VariantType::Shogi => "Draw by 4-fold repetition".to_string(),
                 _ => "Draw by 3-fold repetition".to_string(),
             },
-            GameOverReason::FiftyMoveRule => "Draw by fifty moves rule".to_string(),
+            GameOverReason::FiftyMoveRule => "Draw by fifty-move rule".to_string(),
+            GameOverReason::SeventyMoveRule => "Draw by seventy-move rule".to_string(),
             GameOverReason::PerpetualCheck => match winner {
                 Some(c) => format!("{} wins by perpetual check", c),
                 None => "Loss by perpetual check".to_string(),
@@ -95,6 +102,14 @@ impl GameOverReason {
                 Some(c) => format!("{} wins by impasse", c),
                 None => "Win by impasse".to_string(),
             },
+            GameOverReason::BareKingWin => match winner {
+                Some(c) => format!("{} wins by bare king", c),
+                None => "Win by bare king".to_string(),
+            },
+            GameOverReason::BareKingLoss => match winner {
+                Some(c) => format!("{} loses by bare king", c),
+                None => "Loss by bare king".to_string(),
+            },
         }
     }
 
@@ -106,6 +121,7 @@ impl GameOverReason {
                 | GameOverReason::InsufficientMaterial
                 | GameOverReason::Repetition
                 | GameOverReason::FiftyMoveRule
+                | GameOverReason::SeventyMoveRule
         )
     }
 }
@@ -122,6 +138,10 @@ impl GameStatus {
     pub const ONGOING: Self = Self {
         reason: GameOverReason::None,
     };
+
+    pub fn new(reason: GameOverReason) -> Self {
+        Self { reason }
+    }
 
     /// Returns true if the game is over.
     pub fn is_game_over(&self) -> bool {

@@ -24,6 +24,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5f0e0fee31ef5ed1ba1316088939cea399010ed7731dba877ed44aeb407a75ea"
 
 [[package]]
+name = "arrayvec"
+version = "0.7.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f02882884d3e1bc524fb12c79f107f6ad0e1cfd498c536ffb494301740995dfe"
+
+[[package]]
 name = "autocfg"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -202,6 +208,7 @@ dependencies = [
  "lazy_static",
  "libc",
  "libm",
+ "meowshatranj",
  "nix 0.29.0",
  "pyrrhic-rs",
  "rand",
@@ -341,6 +348,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "714098028fe011992e1c3962653c96b2d578c4b4bce9036e15ff220319b1e0e3"
 dependencies = [
  "libc",
+]
+
+[[package]]
+name = "meowshatranj"
+version = "0.1.0"
+source = "git+https://github.com/Ciekce/meowshatranj/?rev=6a5b92faa36ba9f1a82803b1369b2edceb6a3839#6a5b92faa36ba9f1a82803b1369b2edceb6a3839"
+dependencies = [
+ "arrayvec",
 ]
 
 [[package]]

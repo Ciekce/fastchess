@@ -9,6 +9,7 @@ use crate::types::VariantType;
 
 // Re-export variant implementations
 pub mod chess;
+pub mod shatranj;
 pub mod shogi;
 
 // ── Trait Definitions ────────────────────────────────────────────────────────
@@ -101,6 +102,9 @@ pub trait Game: Send + Sync {
     /// Returns a reference to the inner game as a shogi game, if applicable.
     fn as_shogi(&self) -> Option<&shogi::ShogiGame>;
 
+    /// Returns a reference to the inner game as a shatranj game, if applicable.
+    fn as_shatranj(&self) -> Option<&shatranj::ShatranjGame>;
+
     /// Returns true if the position has occurred 3 times (threefold repetition).
     fn is_threefold_repetition(&self) -> bool;
 }
@@ -119,6 +123,7 @@ pub fn create_game(variant: VariantType) -> Box<dyn Game> {
         VariantType::Standard => Box::new(chess::ChessGame::new()),
         VariantType::Frc => Box::new(chess::ChessGame::with_variant(VariantType::Frc)),
         VariantType::Shogi => Box::new(shogi::ShogiGame::new()),
+        VariantType::Shatranj => Box::new(shatranj::ShatranjGame::new()),
     }
 }
 
@@ -133,6 +138,9 @@ pub fn create_game_from_fen(variant: VariantType, fen: &str) -> Option<Box<dyn G
         VariantType::Shogi => {
             shogi::ShogiGame::from_sfen(fen).map(|g| Box::new(g) as Box<dyn Game>)
         }
+        VariantType::Shatranj => {
+            shatranj::ShatranjGame::from_fen(fen).map(|g| Box::new(g) as Box<dyn Game>)
+        }
     }
 }
 
@@ -143,6 +151,7 @@ pub fn default_fen(variant: VariantType) -> &'static str {
             "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
         }
         VariantType::Shogi => "lnsgkgsnl/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL b - 1",
+        VariantType::Shatranj => "rnbkqbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBKQBNR w K- - 0 1",
     }
 }
 

@@ -33,6 +33,7 @@ pub enum VariantType {
     Standard,
     Frc,
     Shogi,
+    Shatranj,
 }
 
 /// Tournament pairing format.

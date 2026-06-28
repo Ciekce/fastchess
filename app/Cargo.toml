@@ -59,6 +59,8 @@ pyrrhic-rs = { git = "https://github.com/Disservin/pyrrhic-rs/", rev = "ffa0adf4
 chess-library-rs = { git = "https://github.com/Disservin/chess-library-rs/", rev = "d86541a132f3987b974014309b0b379dfba53360" }
 colored = "3.1.1"
 
+meowshatranj = { git = "https://github.com/Ciekce/meowshatranj/", rev = "6a5b92faa36ba9f1a82803b1369b2edceb6a3839" }
+
 # Unix-specific dependencies
 [target.'cfg(unix)'.dependencies]
 nix = { version = "0.29", features = [
