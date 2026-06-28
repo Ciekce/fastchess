@@ -309,7 +309,7 @@ mod tests {
     #[test]
     fn test_game_trait() {
         let mut game: Box<dyn Game> = Box::new(ShatranjGame::new());
-        assert_eq!(game.variant(), VariantType::Standard);
+        assert_eq!(game.variant(), VariantType::Shatranj);
         assert!(game.make_move_notation("e2e3"));
         assert!(game.status().is_ongoing());
     }
