@@ -151,7 +151,7 @@ pub fn default_fen(variant: VariantType) -> &'static str {
             "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
         }
         VariantType::Shogi => "lnsgkgsnl/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL b - 1",
-        VariantType::Shatranj => "rnbkqbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBKQBNR w K- - 0 1",
+        VariantType::Shatranj => "rnbkqbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBKQBNR w - - 0 1",
     }
 }
 
